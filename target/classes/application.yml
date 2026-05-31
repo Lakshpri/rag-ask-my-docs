@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+app:
+  anthropic:
+    api-key: ${ANTHROPIC_API_KEY}
+    model-name: claude-3-5-sonnet-20241022
+    max-tokens: 1024
+    temperature: 0.7
+
+  chroma:
+    url: ${CHROMA_URL:http://localhost:8000}
+    collection-name: documents
+
+  rag:
+    # Number of relevant chunks to retrieve
+    max-results: 5
+    # Minimum relevance score threshold (0.0 - 1.0)
+    min-score: 0.6
+    # Chunk size when splitting documents (in characters)
+    chunk-size: 500
+    chunk-overlap: 50
+
+logging:
+  level:
+    com.ragapp: DEBUG
+    dev.langchain4j: INFO
