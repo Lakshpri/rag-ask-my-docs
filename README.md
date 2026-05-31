@@ -137,30 +137,20 @@ src/main/java/com/ragapp/
 └── RagQueryService.java
 
 ---
-
 ## How It Works
+
+```
 [User uploads PDF]
-│
-▼
-DocumentIngestionService
-├── Parse PDF (PDFBox)
-├── Split into chunks
-├── Embed each chunk (AllMiniLmL6V2 — local, free)
-└── Store in InMemoryEmbeddingStore
+    ▼ DocumentIngestionService
+    ├── Parse PDF (PDFBox)
+    ├── Split into chunks
+    └── Embed each chunk (AllMiniLmL6V2 — local, free)
+        └── Store in InMemoryEmbeddingStore
+
 [User asks question]
-│
-▼
-RagQueryService
-├── Embed the question
-├── Semantic search — find top-K similar chunks
-├── Build prompt: System + Context + Question
-└── Call Groq (Llama 3.3 70B) → return answer + sources
-
----
-
-## Note
-
-Currently uses **in-memory vector store** — documents reset on restart.
-Designed to be upgraded to ChromaDB for persistent production storage.
-
----
+    ▼ RagQueryService
+    ├── Embed the question
+    ├── Semantic search — find top-K similar chunks
+    ├── Build prompt: System + Context + Question
+    └── Call Groq (Llama 3.3 70B) → return answer + sources
+```
