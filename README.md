@@ -118,8 +118,9 @@ Content-Type: application/json
 ```
 
 ---
-
 ## Project Structure
+
+```
 src/main/java/com/ragapp/
 ├── RagApplication.java
 ├── config/
@@ -133,8 +134,9 @@ src/main/java/com/ragapp/
 ├── model/
 │   └── Dto.java
 └── service/
-├── DocumentIngestionService.java
-└── RagQueryService.java
+    ├── DocumentIngestionService.java
+    └── RagQueryService.java
+```
 
 ---
 ## How It Works
